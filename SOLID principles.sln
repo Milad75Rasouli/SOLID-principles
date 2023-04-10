@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SOLID principles", "SOLID principles\SOLID principles.vcxproj", "{03B5621E-89DC-4AC3-8579-A99D4C80D81B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03B5621E-89DC-4AC3-8579-A99D4C80D81B}.Debug|x64.ActiveCfg = Debug|x64
+		{03B5621E-89DC-4AC3-8579-A99D4C80D81B}.Debug|x64.Build.0 = Debug|x64
+		{03B5621E-89DC-4AC3-8579-A99D4C80D81B}.Debug|x86.ActiveCfg = Debug|Win32
+		{03B5621E-89DC-4AC3-8579-A99D4C80D81B}.Debug|x86.Build.0 = Debug|Win32
+		{03B5621E-89DC-4AC3-8579-A99D4C80D81B}.Release|x64.ActiveCfg = Release|x64
+		{03B5621E-89DC-4AC3-8579-A99D4C80D81B}.Release|x64.Build.0 = Release|x64
+		{03B5621E-89DC-4AC3-8579-A99D4C80D81B}.Release|x86.ActiveCfg = Release|Win32
+		{03B5621E-89DC-4AC3-8579-A99D4C80D81B}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E8E9BF43-9A81-4708-A8CA-B4C6FD6AF013}
+	EndGlobalSection
+EndGlobal
