@@ -4,29 +4,37 @@
 /*
 *   SOLID
 *   =========================
-*   S - SRP - Single Responsibility Principle
-*   O - OCP - Open/Closed Principle
+*   S - SRP - Single Responsibility Principle = A class should have one, and only one, reson to change.
+*   O - OCP - Open/Closed Principle = Entities should be open for extension, but closed for modification. Uncle Bob says:
 *   L - LCP - Liskov Substitution Principle
 *   I - ISP - Interface Segregation Principle
 *   D - DTP - Dependency Inversion Principle
 */
 
+class Receipt 
+{
 
+};
 
-
-class User
+class Payment
 {
 public:
+    auto begin(Receipt receipt)->void 
+    {
+        this->acceptCash(receipt);
+    }
 
-    auto create(int id)->void {
-		try
-		{
-			//save
-		}
-		catch (const std::exception& err)
-		{
-			Logger::log(err.what());
-		}
+    auto acceptCash(Receipt& receipt)->void
+    {
+        // accept the cash.
+    }
+    auto card(Receipt& receipt)->void
+    {
+        // accept the cash.
+    }
+    auto paypal(Receipt& receipt)->void
+    {
+        // accept the cash.
     }
 
 };
