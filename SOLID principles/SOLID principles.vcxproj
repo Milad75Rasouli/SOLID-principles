@@ -24,6 +24,7 @@
     <ProjectGuid>{03b5621e-89dc-4ac3-8579-a99d4c80d81b}</ProjectGuid>
     <RootNamespace>SOLIDprinciples</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>SRP</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
