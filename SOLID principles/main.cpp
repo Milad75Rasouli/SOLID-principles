@@ -16,12 +16,8 @@
 
 class User
 {
-	Logger _logger;
 public:
 
-	User(Logger&& logger): _logger(std::move(logger)) {
-
-	}
     auto create(int id)->void {
 		try
 		{
@@ -29,7 +25,7 @@ public:
 		}
 		catch (const std::exception& err)
 		{
-			_logger.log(err.what());
+			Logger::log(err.what());
 		}
     }
 

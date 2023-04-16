@@ -3,7 +3,7 @@
 class Logger {
 
 public:
-	auto log(const char* msg)->void {
+	static auto log(const char* msg)->void {
 		std::cerr << msg << std::endl;
 	}
 };
