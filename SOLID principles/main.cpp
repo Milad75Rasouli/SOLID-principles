@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include "Logger.hpp"
 
 /*
 *   SOLID
@@ -12,13 +12,7 @@
 */
 
 
-class Logger {
 
- public:
-	auto log(const char* msg)->void{
-		std::cerr << msg << std::endl;
-	}
-};
 
 class User
 {
