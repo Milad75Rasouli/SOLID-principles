@@ -11,9 +11,23 @@
 *   D - DTP - Dependency Inversion Principle
 */
 
+
+class Logger {
+
+ public:
+	auto log(const char* msg)->void{
+		std::cerr << msg << std::endl;
+	}
+};
+
 class User
 {
+	Logger _logger;
 public:
+
+	User(Logger&& logger): _logger(std::move(logger)) {
+
+	}
     auto create(int id)->void {
 		try
 		{
@@ -21,16 +35,11 @@ public:
 		}
 		catch (const std::exception& err)
 		{
-			this->log(err.what());
+			_logger.log(err.what());
 		}
     }
 
-	auto log(const char* msg)->void{
-		std::cerr << msg << std::endl;
-	}
-
 };
-
 
 int main()
 {
