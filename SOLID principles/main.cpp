@@ -23,13 +23,9 @@ public:
 
 class Honda : public Car {
 public:
-    auto Drive(Car& car)->void
+    auto Drive(Car& car)->std::string // it must have the same behavior as it parent.
     {
-        std::clog << "Drive has been called from Honda class\n";
-        if (this->color == "silver")
-        {
-            throw "silver is not available.";
-        }
+        return "Drive has been called from Honda class\n";
     }
 };
 
