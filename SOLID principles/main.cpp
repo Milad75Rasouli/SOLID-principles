@@ -26,12 +26,14 @@ class BitcoinPaymentMethod :public PaymentInterface {
 public:
     auto acceptPayment()->void override {
         // logic to accept bitcoin
+        std::cout << "acceptPayment function has been called from BitcoinPaymentMethod\n";
     }
 };
 class CreditCardPaymentMethod :public PaymentInterface {
 public:
     auto acceptPayment()->void override {
         // logic to accept creditcard
+        std::cout << "acceptPayment function has been called from CreditCardPaymentMethod\n";
     }
 };
 
@@ -40,7 +42,7 @@ class Payment
 {
     PaymentInterface* _payment;
 public:
-    auto begin(PaymentInterface&& payment)->void
+    auto begin(PaymentInterface& payment)->void
     {
         payment.acceptPayment();
     }
@@ -48,5 +50,10 @@ public:
 
 int main()
 {
+    BitcoinPaymentMethod bitcoin;
+    CreditCardPaymentMethod card;
+    Payment pay;
+    pay.begin(card);
+    pay.begin(bitcoin);
     std::cout << "Hello World!\n";
 }
