@@ -12,7 +12,12 @@
 
 // LCP - Liskov Substitution Principle 
 
-class Car {
+class CarInterface {
+public:
+    auto virtual Drive()->std::string = 0;
+};
+
+class Car:public CarInterface {
 public:
     auto Drive()->std::string // child must follow its parent. even the retund elements
     {
@@ -25,12 +30,11 @@ public:
     auto Drive()->std::string // it must have the same behavior as it parent.
     {
         return "Drive has been called from Honda class\n";
-
     }
 };
 
 // LCP says: you should replace Car with Honda and vise versa.
-auto run(Car& car)->std::string {
+auto run(CarInterface& car)->std::string {
     return car.Drive(); 
 }
 
@@ -38,7 +42,7 @@ int main()
 {
     Car car;
     Honda honda;
-    auto result = run(car);
+    auto result = run(honda);
     std::clog << result;
     std::cout << "Hello World!\n";
 }
