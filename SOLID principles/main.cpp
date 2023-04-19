@@ -13,16 +13,27 @@
 
 // DIP - Dependency Inversion Principle 
 
-class MYSQLConnection {
+class ConnectionInterface {
+public:
+    auto virtual connect()->void = 0;
+};
+
+class MYSQL :public ConnectionInterface {
+public:
+    auto connect()->void override {
+        std::clog << "MYSQL has been connected.\n";
+    }
 
 };
 
+// now you can you many database connection.
 class ForgotPassword {
     
-    MYSQLConnection connection;
+    ConnectionInterface* connection;
 public:
-    // this class must not know anything about MYSQLConnection. So, it's Wrong.
-    ForgotPassword(MYSQLConnection& connection) {
+    // this it Dependency Injection. ConnectionInterface*
+    ForgotPassword(ConnectionInterface* connection) {
+        // this is Dependency Inversion
         this->connection = connection;
     }
 };
