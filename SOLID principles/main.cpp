@@ -8,61 +8,31 @@
 *   O - OCP - Open/Closed Principle = Entities should be open for extension, but closed for modification.
 *   L - LCP - Liskov Substitution Principle = Derived classes must be substitutable for their bas classes.
 *   I - ISP - Interface Segregation Principle = A client should not be forced to implement and interface that it doesn't use.
-*   D - DTP - Dependency Inversion Principle
+*   D - DIP - Dependency Inversion Principle = Hight-level modules shoulden't depend on low-level modules insted on anstractions, not on concretions.
 */
 
-// ISP - Interface Segregation Principle
+// DIP - Dependency Inversion Principle 
 
-class BirdInterface {
+// it's a low-level modules
+class Mailer 
+{
 public:
-    auto virtual fly()->void = 0;
+
 };
 
-class WalkInterface {
+// it's a high-level modules
+class SendWelcomMessage
+{
 public:
-    auto virtual walk()->void = 0;
-};
-
-//Combind Interface
-class CombindInterface :public WalkInterface, BirdInterface {
-public:
-    auto virtual sing()->void = 0;
-};
-class Parrot: public CombindInterface {
-public:
-    auto fly()->void override {
-        //
-        std::clog << "Parrot fly has been invoked.\n";
-    }
-    auto walk()->void override {
-        //
-        std::clog << "Parrot walk has been invoked.\n";
-    }
-    auto sing()->void override {
-        //
-        std::clog << "Parrot sing has been invoked.\n";
+    Mailer mailer;
+    SendWelcomMessage(Mailer& mailer) {
+        this->mailer = mailer;
     }
 };
 
-class Penguin:public WalkInterface {
-public:
-    auto walk()->void override {
-        //
-        std::clog << "Penguin walk has been invoked.\n";
-    }
-};
 
 
 int main()
 {
-    std::unique_ptr<WalkInterface> penguin2(new Penguin);
-    std::unique_ptr<CombindInterface> parrot2(new Parrot);
-    Penguin penguin3;
-    Parrot parrot3;
-
-    penguin2->walk();
-    penguin3.walk();
-    parrot2->walk();
-    parrot2->sing();
     std::cout << "Hello World!\n";
 }
