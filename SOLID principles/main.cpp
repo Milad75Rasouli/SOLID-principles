@@ -13,23 +13,36 @@
 
 // DIP - Dependency Inversion Principle 
 
+class MailerInterface {
+public:
+    auto virtual send()->void = 0;
+};
 // it's a low-level modules
-class Mailer 
+class SmtpMailer :public MailerInterface
 {
 public:
-
+    auto send()->void override {
+        std::cout << "Send funtion in SmtpMailer\n";
+    }
+};
+// it's a low-level modules
+class SendGridMailer :public MailerInterface
+{
+public:
+    auto send()->void override {
+        std::cout << "Send funtion in SendGridMailer\n";
+    }
 };
 
 // it's a high-level modules
 class SendWelcomMessage
 {
 public:
-    Mailer mailer;
-    SendWelcomMessage(Mailer& mailer) {
+    MailerInterface* mailer;
+    SendWelcomMessage(MailerInterface* mailer) {
         this->mailer = mailer;
     }
 };
-
 
 
 int main()
