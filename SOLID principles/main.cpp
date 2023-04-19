@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 
 /*
 *   SOLID
@@ -6,43 +7,62 @@
 *   S - SRP - Single Responsibility Principle = A class should have one, and only one, reson to change.
 *   O - OCP - Open/Closed Principle = Entities should be open for extension, but closed for modification.
 *   L - LCP - Liskov Substitution Principle = Derived classes must be substitutable for their bas classes.
-*   I - ISP - Interface Segregation Principle
+*   I - ISP - Interface Segregation Principle = A client should not be forced to implement and interface that it doesn't use.
 *   D - DTP - Dependency Inversion Principle
 */
 
-// LCP - Liskov Substitution Principle 
+// ISP - Interface Segregation Principle
 
-class CarInterface {
+class BirdInterface {
 public:
-    auto virtual Drive()->std::string = 0;
+    auto virtual fly()->void = 0;
 };
 
-class Car:public CarInterface {
+class WalkInterface {
 public:
-    auto Drive()->std::string // child must follow its parent. even the retund elements
-    {
-        return "Please drive safely\n";
+    auto virtual walk()->void = 0;
+};
+
+//Combind Interface
+class CombindInterface :public WalkInterface, BirdInterface {
+public:
+    auto virtual sing()->void = 0;
+};
+class Parrot: public CombindInterface {
+public:
+    auto fly()->void override {
+        //
+        std::clog << "Parrot fly has been invoked.\n";
+    }
+    auto walk()->void override {
+        //
+        std::clog << "Parrot walk has been invoked.\n";
+    }
+    auto sing()->void override {
+        //
+        std::clog << "Parrot sing has been invoked.\n";
     }
 };
 
-class Honda : public Car {
+class Penguin:public WalkInterface {
 public:
-    auto Drive()->std::string // it must have the same behavior as it parent.
-    {
-        return "Drive has been called from Honda class\n";
+    auto walk()->void override {
+        //
+        std::clog << "Penguin walk has been invoked.\n";
     }
 };
 
-// LCP says: you should replace Car with Honda and vise versa.
-auto run(CarInterface& car)->std::string {
-    return car.Drive(); 
-}
 
 int main()
 {
-    Car car;
-    Honda honda;
-    auto result = run(honda);
-    std::clog << result;
+    std::unique_ptr<WalkInterface> penguin2(new Penguin);
+    std::unique_ptr<CombindInterface> parrot2(new Parrot);
+    Penguin penguin3;
+    Parrot parrot3;
+
+    penguin2->walk();
+    penguin3.walk();
+    parrot2->walk();
+    parrot2->sing();
     std::cout << "Hello World!\n";
 }
