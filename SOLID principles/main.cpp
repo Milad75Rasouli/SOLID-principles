@@ -11,6 +11,12 @@
 *   D - DIP - Dependency Inversion Principle = Hight-level modules shoulden't depend on low-level modules insted on anstractions, not on concretions.
 */
 
+
+/*
+* Dependency Inversion is a design principle in object-oriented programming
+* that suggests that high-level modules should not depend on low-level modules,
+* but instead both should depend on abstractions.
+*/
 // DIP - Dependency Inversion Principle 
 
 class ConnectionInterface {
